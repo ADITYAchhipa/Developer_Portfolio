@@ -167,26 +167,9 @@
 }
 
 .link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+  padding: 0.5rem 1.2rem;
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
   border-radius: 10px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.link:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-  background: var(--glow-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(145, 94, 255, 0.15);
 }
 
 /* Hover overlay */

@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { FiGithub, FiLinkedin, FiArrowDown } from 'react-icons/fi';
+import FluidButton from '../FluidButton';
+import MagneticWrap from '../MagneticWrap';
 import styles from './HeroSection.module.css';
 
 const ROLES = ['Full Stack Developer', 'Cloud Architect', 'UI/UX Enthusiast', 'Problem Solver'];
@@ -114,32 +116,36 @@ function HeroSection() {
         {/* Bento-style info grid */}
         <div className={`${styles.bentoGrid} ${loaded ? styles.animIn : styles.animHidden}`}
           style={{ transitionDelay: '1000ms' }}>
-          <a href="#contact" className={styles.bentoCta} onClick={handleCTAClick}>
+          <FluidButton variant="solid" href="#contact" onClick={handleCTAClick} className={styles.bentoCta}>
             <span>Let&apos;s Talk</span>
             <FiArrowDown className={styles.ctaIcon} />
-          </a>
+          </FluidButton>
           
-          <a
-            href="https://github.com/ADITYAchhipa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.bentoSocial}
-            aria-label="GitHub profile"
-          >
-            <FiGithub />
-            <span>GitHub</span>
-          </a>
+          <MagneticWrap strength={0.4}>
+            <a
+              href="https://github.com/ADITYAchhipa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.bentoSocial}
+              aria-label="GitHub profile"
+            >
+              <FiGithub />
+              <span>GitHub</span>
+            </a>
+          </MagneticWrap>
 
-          <a
-            href="https://www.linkedin.com/in/aditya-chhipa-ab8634265/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.bentoSocial}
-            aria-label="LinkedIn profile"
-          >
-            <FiLinkedin />
-            <span>LinkedIn</span>
-          </a>
+          <MagneticWrap strength={0.4}>
+            <a
+              href="https://www.linkedin.com/in/aditya-chhipa-ab8634265/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.bentoSocial}
+              aria-label="LinkedIn profile"
+            >
+              <FiLinkedin />
+              <span>LinkedIn</span>
+            </a>
+          </MagneticWrap>
 
           <div className={styles.bentoLocation}>
             <span className={styles.locationEmoji}>📍</span>

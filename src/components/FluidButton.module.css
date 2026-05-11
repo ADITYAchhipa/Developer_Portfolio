@@ -1,0 +1,144 @@
+/* Fluid Fill Button — liquid animation from cursor entry point */
+
+.fluidBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+}
+
+.fluidBtn:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.fluidBtn:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* Fill blob — expands from cursor position */
+.fill {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.fillActive {
+  width: 400px;
+  height: 400px;
+  opacity: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+/* === Variants === */
+
+/* Primary — gradient border, white fill on hover */
+.primary {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  box-shadow: 0 4px 20px rgba(145, 94, 255, 0.15);
+}
+
+.primary .fill {
+  background: var(--gradient-primary);
+}
+
+.primary:hover {
+  box-shadow: 0 12px 40px rgba(145, 94, 255, 0.35);
+}
+
+.primary:hover .content {
+  color: #fff;
+}
+
+/* Solid — filled by default, lighter fill on hover */
+.solid {
+  background: var(--gradient-primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 24px rgba(145, 94, 255, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.solid .fill {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.solid:hover {
+  box-shadow: 0 12px 40px rgba(145, 94, 255, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Ghost — minimal, text only with fill */
+.ghost {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.ghost .fill {
+  background: var(--glow-primary);
+}
+
+.ghost:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(145, 94, 255, 0.1);
+}
+
+.ghost:hover .content {
+  color: var(--primary);
+}
+
+/* Glass — glassmorphism style */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass .fill {
+  background: linear-gradient(135deg, rgba(145, 94, 255, 0.2), rgba(56, 189, 248, 0.15));
+}
+
+.glass:hover {
+  border-color: var(--primary);
+  box-shadow: 0 12px 40px rgba(145, 94, 255, 0.15);
+}
+
+.glass:hover .content {
+  color: var(--primary);
+}

@@ -1,5 +1,6 @@
 import { FiExternalLink, FiGithub, FiArrowUpRight } from 'react-icons/fi';
 import ScrollReveal from '../ScrollReveal';
+import FluidButton from '../FluidButton';
 import styles from './ProjectsSection.module.css';
 
 function ProjectsSection({ data = [] }) {
@@ -48,28 +49,26 @@ function ProjectsSection({ data = [] }) {
 
                 <div className={styles.links}>
                   {project.demoUrl && (
-                    <a
+                    <FluidButton
+                      variant="ghost"
                       href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className={styles.link}
                       aria-label={`Live demo of ${project.title}`}
                     >
                       <FiExternalLink />
                       <span>Live</span>
-                    </a>
+                    </FluidButton>
                   )}
                   {project.repoUrl && (
-                    <a
+                    <FluidButton
+                      variant="ghost"
                       href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className={styles.link}
                       aria-label={`Source code for ${project.title}`}
                     >
                       <FiGithub />
                       <span>Code</span>
-                    </a>
+                    </FluidButton>
                   )}
                 </div>
               </div>
