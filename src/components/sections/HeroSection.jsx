@@ -10,6 +10,13 @@ function HeroSection() {
   const [isDeleting, setIsDeleting] = useState(false);
   const containerRef = useRef(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [loaded, setLoaded] = useState(false);
+
+  // Trigger entrance animations after mount
+  useEffect(() => {
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Typing effect
   useEffect(() => {
@@ -81,25 +88,32 @@ function HeroSection() {
 
       <div className={styles.content}>
         {/* Status badge */}
-        <div className={styles.statusBadge}>
+        <div className={`${styles.statusBadge} ${loaded ? styles.animIn : styles.animHidden}`}
+          style={{ transitionDelay: '200ms' }}>
           <span className={styles.statusDot} />
           <span>Available for work</span>
         </div>
 
-        <h1 className={styles.name}>Aditya Chhipa</h1>
+        <h1 className={`${styles.name} ${loaded ? styles.animIn : styles.animHidden}`}
+          style={{ transitionDelay: '400ms' }}>
+          Aditya Chhipa
+        </h1>
         
-        <div className={styles.roleWrapper}>
+        <div className={`${styles.roleWrapper} ${loaded ? styles.animIn : styles.animHidden}`}
+          style={{ transitionDelay: '600ms' }}>
           <span className={styles.rolePrefix}>&gt; </span>
           <span className={styles.role}>{displayText}</span>
           <span className={styles.cursor}>|</span>
         </div>
 
-        <p className={styles.tagline}>
+        <p className={`${styles.tagline} ${loaded ? styles.animIn : styles.animHidden}`}
+          style={{ transitionDelay: '800ms' }}>
           I build things for the web that are fast, accessible, and look damn good.
         </p>
 
         {/* Bento-style info grid */}
-        <div className={styles.bentoGrid}>
+        <div className={`${styles.bentoGrid} ${loaded ? styles.animIn : styles.animHidden}`}
+          style={{ transitionDelay: '1000ms' }}>
           <a href="#contact" className={styles.bentoCta} onClick={handleCTAClick}>
             <span>Let&apos;s Talk</span>
             <FiArrowDown className={styles.ctaIcon} />
@@ -135,7 +149,8 @@ function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className={styles.scrollIndicator} aria-hidden="true">
+      <div className={`${styles.scrollIndicator} ${loaded ? styles.animIn : styles.animHidden}`}
+        style={{ transitionDelay: '1200ms' }} aria-hidden="true">
         <div className={styles.scrollLine} />
       </div>
     </section>

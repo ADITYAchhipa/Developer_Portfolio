@@ -1,22 +1,27 @@
 import { FiBookOpen } from 'react-icons/fi';
+import ScrollReveal from '../ScrollReveal';
 import styles from './EducationSection.module.css';
 
 function EducationSection({ data = [] }) {
   return (
     <section id="education" className={styles.education} aria-label="Education">
       <div className={styles.container}>
-        <div className={styles.sectionLabel}>
-          <span className={styles.labelLine} />
-          <span className={styles.labelText}>Education</span>
-        </div>
+        <ScrollReveal animation="fadeLeft" duration={600}>
+          <div className={styles.sectionLabel}>
+            <span className={styles.labelLine} />
+            <span className={styles.labelText}>Education</span>
+          </div>
+        </ScrollReveal>
 
-        <h2 className={styles.heading}>
-          Academic <span className={styles.highlight}>background</span>
-        </h2>
+        <ScrollReveal animation="fadeUp" delay={100}>
+          <h2 className={styles.heading}>
+            Academic <span className={styles.highlight}>background</span>
+          </h2>
+        </ScrollReveal>
 
         <div className={styles.grid}>
           {data.map((entry, index) => (
-            <article key={index} className={styles.card}>
+            <ScrollReveal key={index} animation="fadeUp" delay={index * 150} as="article" className={styles.card}>
               <div className={styles.cardIcon}>
                 <FiBookOpen />
               </div>
@@ -33,7 +38,7 @@ function EducationSection({ data = [] }) {
               <div className={styles.periodBadge}>
                 {entry.startYear} — {entry.endYear || 'Present'}
               </div>
-            </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>

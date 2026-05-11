@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ScrollReveal from '../ScrollReveal';
 import styles from './ContactSection.module.css';
 
 function validateField(name, value) {
@@ -92,12 +93,17 @@ function ContactSection() {
   return (
     <section id="contact" className={styles.contact} aria-label="Contact">
       <div className={styles.container}>
-        <h2 className={styles.heading}>Get In Touch</h2>
-        <p className={styles.intro}>
-          Have a project in mind or want to collaborate? Drop me a message and
-          I&apos;ll get back to you as soon as possible.
-        </p>
+        <ScrollReveal animation="fadeUp">
+          <h2 className={styles.heading}>Get In Touch</h2>
+        </ScrollReveal>
+        <ScrollReveal animation="fadeUp" delay={100}>
+          <p className={styles.intro}>
+            Have a project in mind or want to collaborate? Drop me a message and
+            I&apos;ll get back to you as soon as possible.
+          </p>
+        </ScrollReveal>
 
+        <ScrollReveal animation="fadeUp" delay={200}>
         <div className={styles.formCard}>
           {successMessage && (
             <p className={styles.successMessage} role="status">
@@ -220,6 +226,7 @@ function ContactSection() {
             </button>
           </form>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,23 +1,27 @@
 import { FiExternalLink, FiGithub, FiArrowUpRight } from 'react-icons/fi';
+import ScrollReveal from '../ScrollReveal';
 import styles from './ProjectsSection.module.css';
 
 function ProjectsSection({ data = [] }) {
   return (
     <section id="projects" className={styles.projects} aria-label="Projects">
       <div className={styles.container}>
-        <div className={styles.sectionLabel}>
-          <span className={styles.labelLine} />
-          <span className={styles.labelText}>Projects</span>
-        </div>
+        <ScrollReveal animation="fadeLeft" duration={600}>
+          <div className={styles.sectionLabel}>
+            <span className={styles.labelLine} />
+            <span className={styles.labelText}>Projects</span>
+          </div>
+        </ScrollReveal>
 
-        <h2 className={styles.heading}>
-          Things I&apos;ve <span className={styles.highlight}>built</span>
-        </h2>
+        <ScrollReveal animation="fadeUp" delay={100}>
+          <h2 className={styles.heading}>
+            Things I&apos;ve <span className={styles.highlight}>built</span>
+          </h2>
+        </ScrollReveal>
 
         <div className={styles.grid}>
           {data.map((project, index) => (
-            <article key={index} className={styles.card}>
-              {/* Project number watermark */}
+            <ScrollReveal key={index} animation="fadeUp" delay={index * 150} as="article" className={styles.card}>
               <span className={styles.watermark} aria-hidden="true">
                 {String(index + 1).padStart(2, '0')}
               </span>
@@ -70,9 +74,8 @@ function ProjectsSection({ data = [] }) {
                 </div>
               </div>
 
-              {/* Hover gradient overlay */}
               <div className={styles.cardOverlay} aria-hidden="true" />
-            </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>

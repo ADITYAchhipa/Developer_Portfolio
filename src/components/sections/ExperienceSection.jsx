@@ -1,4 +1,5 @@
 import { FiBriefcase } from 'react-icons/fi';
+import ScrollReveal from '../ScrollReveal';
 import styles from './ExperienceSection.module.css';
 
 function formatDate(dateStr) {
@@ -11,18 +12,22 @@ function ExperienceSection({ data = [] }) {
   return (
     <section id="experience" className={styles.experience} aria-label="Work experience">
       <div className={styles.container}>
-        <div className={styles.sectionLabel}>
-          <span className={styles.labelLine} />
-          <span className={styles.labelText}>Experience</span>
-        </div>
+        <ScrollReveal animation="fadeLeft" duration={600}>
+          <div className={styles.sectionLabel}>
+            <span className={styles.labelLine} />
+            <span className={styles.labelText}>Experience</span>
+          </div>
+        </ScrollReveal>
 
-        <h2 className={styles.heading}>
-          Where I&apos;ve <span className={styles.highlight}>worked</span>
-        </h2>
+        <ScrollReveal animation="fadeUp" delay={100}>
+          <h2 className={styles.heading}>
+            Where I&apos;ve <span className={styles.highlight}>worked</span>
+          </h2>
+        </ScrollReveal>
 
         <div className={styles.cards}>
           {data.map((entry, index) => (
-            <article key={index} className={styles.card}>
+            <ScrollReveal key={index} animation="fadeLeft" delay={index * 150} as="article" className={styles.card}>
               <div className={styles.cardNumber}>
                 {String(index + 1).padStart(2, '0')}
               </div>
@@ -42,7 +47,7 @@ function ExperienceSection({ data = [] }) {
                 )}
               </div>
               <div className={styles.cardAccent} aria-hidden="true" />
-            </article>
+            </ScrollReveal>
           ))}
         </div>
       </div>
