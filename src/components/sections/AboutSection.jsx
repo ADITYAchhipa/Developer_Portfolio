@@ -1,53 +1,77 @@
+import { FiCode, FiCloud, FiSearch, FiZap } from 'react-icons/fi';
 import styles from './AboutSection.module.css';
 
 function AboutSection() {
   return (
     <section id="about" className={styles.about} aria-label="About me">
       <div className={styles.container}>
-        <h2 className={styles.heading}>About Me</h2>
+        <div className={styles.sectionLabel}>
+          <span className={styles.labelLine} />
+          <span className={styles.labelText}>About</span>
+        </div>
 
-        <article className={styles.intro}>
-          <p>
-            I&apos;m a passionate website designer and Full Stack Developer who
-            thrives on building fast, accessible, and beautifully crafted web
-            experiences. I combine clean code with thoughtful design to deliver
-            products that users love.
-          </p>
-        </article>
-
-        <div className={styles.cards}>
-          <section className={styles.card} aria-labelledby="expertise-seo">
-            <h3 id="expertise-seo" className={styles.cardTitle}>
-              SEO &amp; Search Ranking
-            </h3>
-            <p className={styles.cardText}>
-              Deep expertise in SEO optimization and search ranking enhancement —
-              from technical audits and structured data to content strategy that
-              drives organic growth.
+        <div className={styles.bento}>
+          {/* Main intro card — spans full width */}
+          <article className={`${styles.card} ${styles.cardMain}`}>
+            <div className={styles.cardGlow} aria-hidden="true" />
+            <h2 className={styles.mainTitle}>
+              I craft digital experiences that <span className={styles.highlight}>feel alive</span>
+            </h2>
+            <p className={styles.mainText}>
+              Full Stack Developer obsessed with building fast, accessible, and 
+              beautifully crafted web products. I combine clean code with thoughtful 
+              design — because users deserve both.
             </p>
-          </section>
+          </article>
 
-          <section className={styles.card} aria-labelledby="expertise-aws">
-            <h3 id="expertise-aws" className={styles.cardTitle}>
-              AWS &amp; Cloud Deployment
-            </h3>
+          {/* Expertise cards */}
+          <article className={`${styles.card} ${styles.cardSkill}`}>
+            <div className={styles.cardIcon}>
+              <FiSearch />
+            </div>
+            <h3 className={styles.cardTitle}>SEO & Growth</h3>
             <p className={styles.cardText}>
-              Hands-on experience deploying and managing applications on AWS —
-              S3, EC2, Docker, ECS, EKS, Elastic Beanstalk, and SNS for
-              scalable, production-ready infrastructure.
+              Technical audits, structured data, and content strategy that drives organic traffic.
             </p>
-          </section>
+          </article>
 
-          <section className={styles.card} aria-labelledby="expertise-web">
-            <h3 id="expertise-web" className={styles.cardTitle}>
-              Web Design &amp; Development
-            </h3>
+          <article className={`${styles.card} ${styles.cardSkill}`}>
+            <div className={styles.cardIcon}>
+              <FiCloud />
+            </div>
+            <h3 className={styles.cardTitle}>Cloud & DevOps</h3>
             <p className={styles.cardText}>
-              Crafting responsive, mobile-first interfaces with modern
-              frameworks. Focused on performance, accessibility, and pixel-perfect
-              implementation.
+              AWS, Docker, Kubernetes — production-ready infrastructure at scale.
             </p>
-          </section>
+          </article>
+
+          <article className={`${styles.card} ${styles.cardSkill}`}>
+            <div className={styles.cardIcon}>
+              <FiCode />
+            </div>
+            <h3 className={styles.cardTitle}>Web Dev</h3>
+            <p className={styles.cardText}>
+              Responsive, mobile-first interfaces with pixel-perfect implementation.
+            </p>
+          </article>
+
+          {/* Stats card */}
+          <article className={`${styles.card} ${styles.cardStats}`}>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>2+</span>
+              <span className={styles.statLabel}>Years Exp</span>
+            </div>
+            <div className={styles.statDivider} />
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>10+</span>
+              <span className={styles.statLabel}>Projects</span>
+            </div>
+            <div className={styles.statDivider} />
+            <div className={styles.statItem}>
+              <FiZap className={styles.statIcon} />
+              <span className={styles.statLabel}>Fast AF</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>

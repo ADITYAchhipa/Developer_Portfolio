@@ -1,17 +1,29 @@
-import { FiExternalLink } from 'react-icons/fi';
+import { FiAward, FiExternalLink } from 'react-icons/fi';
 import styles from './CertificationsSection.module.css';
 
 function CertificationsSection({ data = [] }) {
   return (
     <section id="certifications" className={styles.certifications} aria-label="Certifications">
       <div className={styles.container}>
-        <h2 className={styles.heading}>Certifications</h2>
+        <div className={styles.sectionLabel}>
+          <span className={styles.labelLine} />
+          <span className={styles.labelText}>Certifications</span>
+        </div>
+
+        <h2 className={styles.heading}>
+          Verified <span className={styles.highlight}>credentials</span>
+        </h2>
 
         <div className={styles.grid}>
           {data.map((cert, index) => (
             <article key={index} className={styles.card}>
-              <h3 className={styles.name}>{cert.name}</h3>
-              <p className={styles.organization}>{cert.organization}</p>
+              <div className={styles.cardBadge}>
+                <FiAward />
+              </div>
+              <div className={styles.cardBody}>
+                <h3 className={styles.name}>{cert.name}</h3>
+                <p className={styles.organization}>{cert.organization}</p>
+              </div>
               {cert.credentialUrl && (
                 <a
                   href={cert.credentialUrl}
@@ -21,9 +33,10 @@ function CertificationsSection({ data = [] }) {
                   aria-label={`View credential for ${cert.name}`}
                 >
                   <FiExternalLink />
-                  <span>View Credential</span>
                 </a>
               )}
+              {/* Shine effect */}
+              <div className={styles.shine} aria-hidden="true" />
             </article>
           ))}
         </div>

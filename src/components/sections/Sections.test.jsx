@@ -20,8 +20,8 @@ describe('ExperienceSection', () => {
 
   it('renders all experience entries', () => {
     render(<ExperienceSection data={mockData} />);
-    expect(screen.getByText('Acme Corp')).toBeInTheDocument();
-    expect(screen.getByText('Beta Inc')).toBeInTheDocument();
+    expect(screen.getByText((content) => content.includes('Acme Corp'))).toBeInTheDocument();
+    expect(screen.getByText((content) => content.includes('Beta Inc'))).toBeInTheDocument();
   });
 
   it('displays role titles', () => {
@@ -87,7 +87,7 @@ describe('ProjectsSection', () => {
 
   it('conditionally renders demo link only when demoUrl exists', () => {
     render(<ProjectsSection data={mockData} />);
-    const demoLinks = screen.getAllByText('Demo');
+    const demoLinks = screen.getAllByText('Live');
     expect(demoLinks).toHaveLength(1);
   });
 
@@ -136,12 +136,13 @@ describe('SkillsSection', () => {
 
   it('renders all skill names', () => {
     render(<SkillsSection data={mockData} />);
-    expect(screen.getByText('JavaScript')).toBeInTheDocument();
-    expect(screen.getByText('Python')).toBeInTheDocument();
-    expect(screen.getByText('React')).toBeInTheDocument();
-    expect(screen.getByText('PostgreSQL')).toBeInTheDocument();
-    expect(screen.getByText('Docker')).toBeInTheDocument();
-    expect(screen.getByText('Git')).toBeInTheDocument();
+    // Use getAllByText since marquee duplicates skill names
+    expect(screen.getAllByText('JavaScript').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('Python').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('React').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('PostgreSQL').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('Docker').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('Git').length).toBeGreaterThanOrEqual(1);
   });
 
   it('groups skills by category with category headings', () => {
@@ -216,7 +217,8 @@ describe('EducationSection', () => {
 
   it('displays location when provided', () => {
     render(<EducationSection data={mockData} />);
-    expect(screen.getByText('Udaipur, Rajasthan')).toBeInTheDocument();
+    // Location now has emoji prefix, use a function matcher
+    expect(screen.getByText((content) => content.includes('Udaipur, Rajasthan'))).toBeInTheDocument();
   });
 
   it('displays year range', () => {
@@ -265,13 +267,13 @@ describe('CertificationsSection', () => {
 
   it('renders credential link when credentialUrl exists', () => {
     render(<CertificationsSection data={mockData} />);
-    const credLinks = screen.getAllByText('View Credential');
+    const credLinks = screen.getAllByLabelText(/view credential/i);
     expect(credLinks).toHaveLength(2);
   });
 
   it('does not render credential link when credentialUrl is null', () => {
     render(<CertificationsSection data={[mockData[2]]} />);
-    expect(screen.queryByText('View Credential')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/view credential/i)).not.toBeInTheDocument();
   });
 
   it('credential links have correct href', () => {

@@ -1,18 +1,11 @@
-/* responsive.css — Global responsive utilities and overrides
-   Most responsive work is handled by individual component CSS Modules.
-   This file provides:
-   1. Global container constraints (especially for ultra-wide screens)
-   2. Main content top padding for the fixed navbar
-   3. Loading/error screen styling
-   4. Responsive typography scaling
-*/
+/* Responsive — Global utilities and overrides */
 
-/* ===== Main content offset for fixed navbar ===== */
+/* Main content offset for fixed navbar */
 main {
-  padding-top: 4rem; /* accounts for fixed navbar height */
+  padding-top: 4.5rem;
 }
 
-/* ===== Loading & Error screens ===== */
+/* Loading & Error screens */
 .loading-screen,
 .error-screen {
   display: flex;
@@ -28,7 +21,7 @@ main {
 .loading-screen p,
 .error-screen p {
   font-size: 1.125rem;
-  opacity: 0.7;
+  color: var(--text-muted);
 }
 
 .section-loading {
@@ -36,35 +29,28 @@ main {
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  color: var(--text);
-  opacity: 0.5;
+  color: var(--text-muted);
   font-size: 1rem;
 }
 
-/* ===== Global responsive typography scaling ===== */
+/* Responsive typography */
 html {
-  font-size: 100%; /* 16px base */
+  font-size: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 100%; /* keep 16px on tablet */
-  }
+  html { font-size: 100%; }
 }
 
 @media (min-width: 1024px) {
-  html {
-    font-size: 106.25%; /* 17px on desktop */
-  }
+  html { font-size: 106.25%; }
 }
 
 @media (min-width: 1440px) {
-  html {
-    font-size: 112.5%; /* 18px on large desktop */
-  }
+  html { font-size: 112.5%; }
 }
 
-/* ===== Ultra-wide screen constraints (up to 2560px) ===== */
+/* Ultra-wide constraints */
 @media (min-width: 1920px) {
   main {
     max-width: 1600px;
@@ -79,8 +65,7 @@ html {
   }
 }
 
-/* ===== Global responsive spacing utilities ===== */
-/* Sections get tighter padding on small screens */
+/* Section padding */
 @media (max-width: 479px) {
   section {
     padding-left: 1rem;

@@ -1,17 +1,35 @@
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { FiExternalLink, FiGithub, FiArrowUpRight } from 'react-icons/fi';
 import styles from './ProjectsSection.module.css';
 
 function ProjectsSection({ data = [] }) {
   return (
     <section id="projects" className={styles.projects} aria-label="Projects">
       <div className={styles.container}>
-        <h2 className={styles.heading}>Projects</h2>
+        <div className={styles.sectionLabel}>
+          <span className={styles.labelLine} />
+          <span className={styles.labelText}>Projects</span>
+        </div>
+
+        <h2 className={styles.heading}>
+          Things I&apos;ve <span className={styles.highlight}>built</span>
+        </h2>
 
         <div className={styles.grid}>
           {data.map((project, index) => (
             <article key={index} className={styles.card}>
-              <div className={styles.cardBody}>
-                <h3 className={styles.title}>{project.title}</h3>
+              {/* Project number watermark */}
+              <span className={styles.watermark} aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <div className={styles.cardContent}>
+                <div className={styles.cardTop}>
+                  <h3 className={styles.title}>
+                    {project.title}
+                    <FiArrowUpRight className={styles.titleArrow} />
+                  </h3>
+                </div>
+
                 <p className={styles.description}>{project.description}</p>
 
                 {project.technologies && project.technologies.length > 0 && (
@@ -23,34 +41,37 @@ function ProjectsSection({ data = [] }) {
                     ))}
                   </ul>
                 )}
+
+                <div className={styles.links}>
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                      aria-label={`Live demo of ${project.title}`}
+                    >
+                      <FiExternalLink />
+                      <span>Live</span>
+                    </a>
+                  )}
+                  {project.repoUrl && (
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                      aria-label={`Source code for ${project.title}`}
+                    >
+                      <FiGithub />
+                      <span>Code</span>
+                    </a>
+                  )}
+                </div>
               </div>
 
-              <div className={styles.links}>
-                {project.demoUrl && (
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.link}
-                    aria-label={`Live demo of ${project.title}`}
-                  >
-                    <FiExternalLink />
-                    <span>Demo</span>
-                  </a>
-                )}
-                {project.repoUrl && (
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.link}
-                    aria-label={`Source code for ${project.title}`}
-                  >
-                    <FiGithub />
-                    <span>Code</span>
-                  </a>
-                )}
-              </div>
+              {/* Hover gradient overlay */}
+              <div className={styles.cardOverlay} aria-hidden="true" />
             </article>
           ))}
         </div>
