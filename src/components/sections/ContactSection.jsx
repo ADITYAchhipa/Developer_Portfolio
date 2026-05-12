@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import ScrollReveal from '../ScrollReveal';
 import styles from './ContactSection.module.css';
+
+const Spline = lazy(() => import('@splinetool/react-spline'));
 
 function validateField(name, value) {
   switch (name) {
@@ -104,7 +106,16 @@ function ContactSection() {
         </ScrollReveal>
 
         <ScrollReveal animation="fadeUp" delay={200}>
-        <div className={styles.formCard}>
+        <div className={styles.contactLayout}>
+          {/* Spline 3D Robot — left side */}
+          <div className={styles.splineWrap}>
+            <Suspense fallback={<div className={styles.splinePlaceholder} />}>
+              <SplineRobot />
+            </Suspense>
+            <div className={styles.splineCover} />
+          </div>
+
+          <div className={styles.formCard}>
           {successMessage && (
             <p className={styles.successMessage} role="status">
               {successMessage}
@@ -226,10 +237,16 @@ function ContactSection() {
             </button>
           </form>
         </div>
+
+        </div>
         </ScrollReveal>
       </div>
     </section>
   );
+}
+
+function SplineRobot() {
+  return <Spline scene="https://prod.spline.design/9Hrr8ckKEVOtxtud/scene.splinecode" />;
 }
 
 export { validateField, validateForm };
