@@ -110,7 +110,7 @@ function HeroSection() {
 
         <p className={`${styles.tagline} ${loaded ? styles.animIn : styles.animHidden}`}
           style={{ transitionDelay: '800ms' }}>
-          I build things for the web that are fast, accessible, and look damn good.
+          I build scalable full-stack web applications using React, Node.js, AWS, and modern cloud technologies.
         </p>
 
         {/* Bento-style info grid */}
