@@ -68,9 +68,18 @@ const portfolioData = {
       institution: 'Techno NJR',
       university: 'RTU Kota',
       location: 'Udaipur, Rajasthan',
-      startYear: 2020,
-      endYear: 2024,
+      startYear: 2022,
+      endYear: 2026,
       order: 1
+    },
+    {
+      degree: 'Schooling',
+      institution: 'K V No. 1 Pratapnagar',
+      university: '',
+      location: 'Udaipur, Rajasthan',
+      startYear: 2010,
+      endYear: 2022,
+      order: 2
     }
   ],
   certifications: [

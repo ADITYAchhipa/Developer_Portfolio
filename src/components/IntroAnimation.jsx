@@ -15,7 +15,7 @@ function IntroAnimation({ onComplete }) {
   const whiteoutRef = useRef(null);
   const scrollHintRef = useRef(null);
   const accumulatedScroll = useRef(0);
-  const maxScroll = 2000;
+  const maxScroll = 800;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -53,13 +53,13 @@ function IntroAnimation({ onComplete }) {
 
     const animate = () => {
       if (done) return;
-      const speed = currentProgress > 0.3 ? 0.12 : 0.05;
+      const speed = currentProgress > 0.3 ? 0.18 : 0.05;
       currentProgress += (targetProgress - currentProgress) * speed;
 
       const depth = currentProgress * 2000;
       const contentOpacity = Math.max(0, 1 - currentProgress * 2.5);
       const vignetteOpacity = Math.min(1, currentProgress * 1.5);
-      const whiteoutOpacity = currentProgress > 0.4 ? Math.min(1, (currentProgress - 0.4) / 0.2) : 0;
+      const whiteoutOpacity = currentProgress > 0.7 ? Math.min(1, (currentProgress - 0.7) / 0.15) : 0;
 
       if (sceneRef.current) sceneRef.current.style.transform = `translateZ(${depth}px)`;
       if (contentRef.current) contentRef.current.style.opacity = contentOpacity;
@@ -80,7 +80,7 @@ function IntroAnimation({ onComplete }) {
       e.stopPropagation();
       accumulatedScroll.current = Math.min(maxScroll, Math.max(0, accumulatedScroll.current + e.deltaY));
       targetProgress = accumulatedScroll.current / maxScroll;
-      if (targetProgress > 0.8) { targetProgress = 1; accumulatedScroll.current = maxScroll; }
+      if (targetProgress > 0.6) { targetProgress = 1; accumulatedScroll.current = maxScroll; }
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
