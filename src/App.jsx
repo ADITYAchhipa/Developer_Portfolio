@@ -1,6 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useCallback } from 'react';
 import Layout from './components/Layout/Layout';
 import SEOHead from './components/SEOHead';
+import IntroAnimation from './components/IntroAnimation';
 import usePortfolioData from './hooks/usePortfolioData';
 import useIntersectionObserver from './hooks/useIntersectionObserver';
 
@@ -28,10 +29,16 @@ const SECTION_IDS = [
 function App() {
   const { data } = usePortfolioData();
   const activeSection = useIntersectionObserver(SECTION_IDS);
+  const [introComplete, setIntroComplete] = useState(false);
+
+  const handleIntroComplete = useCallback(() => {
+    setIntroComplete(true);
+  }, []);
 
   return (
     <>
       <SEOHead />
+      {!introComplete && <IntroAnimation onComplete={handleIntroComplete} />}
       <Layout activeSection={activeSection}>
         <Suspense fallback={<div className="section-loading">Loading...</div>}>
           <HeroSection />
