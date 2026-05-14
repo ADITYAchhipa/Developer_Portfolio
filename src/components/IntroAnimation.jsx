@@ -140,8 +140,8 @@ function IntroAnimation({ onComplete }) {
           <div className={`${styles.marqueeStrip} ${isExpanded ? styles.marqueeShow : ''}`}
             style={isZooming ? { opacity: contentOpacity } : undefined}>
             <div className={styles.marqueeTrack}>
-              <span>React &bull; Node.js &bull; AWS &bull; MongoDB &bull; Docker &bull; Kubernetes &bull; Full Stack &bull; Cloud Architecture &bull; WebRTC &bull; System Design &bull; </span>
-              <span>React &bull; Node.js &bull; AWS &bull; MongoDB &bull; Docker &bull; Kubernetes &bull; Full Stack &bull; Cloud Architecture &bull; WebRTC &bull; System Design &bull; </span>
+              <span>React &bull; Node.js &bull; AWS &bull; MongoDB &bull; Docker &bull; Kubernetes &bull; Full Stack &bull; Cloud Architecture &bull; WebRTC &bull; System Design &bull; React &bull; Node.js &bull; AWS &bull; MongoDB &bull; Docker &bull; Kubernetes &bull; Full Stack &bull; Cloud Architecture &bull; WebRTC &bull; System Design &bull; </span>
+              <span>React &bull; Node.js &bull; AWS &bull; MongoDB &bull; Docker &bull; Kubernetes &bull; Full Stack &bull; Cloud Architecture &bull; WebRTC &bull; System Design &bull; React &bull; Node.js &bull; AWS &bull; MongoDB &bull; Docker &bull; Kubernetes &bull; Full Stack &bull; Cloud Architecture &bull; WebRTC &bull; System Design &bull; </span>
             </div>
           </div>
 
@@ -168,7 +168,7 @@ function IntroAnimation({ onComplete }) {
 
           {/* Main text */}
           <h1 className={`${styles.name} ${isVisible ? styles.slideIn : ''} ${isWhite ? styles.white : ''} ${isExpanded ? styles.expand : ''}`}>
-            Aditya<span className={styles.tm}>™</span>
+            Aditya
           </h1>
         </div>
       </div>

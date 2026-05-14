@@ -71,9 +71,9 @@ function Footer() {
         <div className={styles.bigName} aria-hidden="true">
           <div className={styles.bigNameInner}>
             <span className={styles.bigNameText}>Aditya Chhipa</span>
-            <span className={styles.bigNameText}><span className={styles.tm}>™</span></span>
             <span className={styles.bigNameText}>Aditya Chhipa</span>
-            <span className={styles.bigNameText}><span className={styles.tm}>™</span></span>
+            <span className={styles.bigNameText}>Aditya Chhipa</span>
+            <span className={styles.bigNameText}>Aditya Chhipa</span>
           </div>
         </div>
 
