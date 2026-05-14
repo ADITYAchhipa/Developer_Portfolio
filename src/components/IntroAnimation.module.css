@@ -1,0 +1,174 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease;
+  overflow: hidden;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+/* Main text styles */
+.name {
+  font-size: clamp(5rem, 15vw, 14rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -2px;
+  opacity: 0;
+  user-select: none;
+  white-space: nowrap;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -300%) scale(1);
+  transform-origin: left bottom;
+  will-change: transform, opacity, color;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s ease,
+              color 0.8s ease;
+}
+
+.name.slideIn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.name.white {
+  color: #ffffff;
+}
+
+.name.expand {
+  color: #ffffff;
+  transform: translate(-48vw, 30vh) scale(1.3);
+}
+
+.tm {
+  font-size: 0.4em;
+  vertical-align: super;
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+/* Cuboid navbar */
+.cuboidWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  perspective: 800px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+
+.cuboidWrapper.cuboidShow {
+  opacity: 1;
+}
+
+.cuboid {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cuboid.cuboidRoll {
+  transform: rotateX(-90deg);
+}
+
+.cuboidFaceFront,
+.cuboidFaceBottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cuboidFaceFront {
+  transform: translateZ(30px);
+}
+
+.cuboidFaceBottom {
+  transform: rotateX(90deg) translateZ(30px);
+}
+
+.cuboidTeaser {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.navContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+}
+
+.navLogo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+}
+
+.themeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1.15rem;
+}
