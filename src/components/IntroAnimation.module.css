@@ -17,13 +17,23 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+  perspective: 1000px;
+  perspective-origin: 30% 88%;
 }
 
 .scene {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  will-change: transform, filter;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.contentLayer {
+  position: absolute;
+  inset: 0;
+  will-change: opacity;
 }
 
 /* Cinematic overlays */
