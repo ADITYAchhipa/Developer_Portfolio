@@ -176,6 +176,7 @@
   color: #000000;
   opacity: 1;
   letter-spacing: -0.04em;
+  padding-right: 4rem;
 }
 
 [data-theme="dark"] .bigNameText {
